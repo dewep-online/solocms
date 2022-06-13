@@ -1,0 +1,29 @@
+package: solocms
+source: solocms
+version: '1:0.0.0'
+architecture:
+  - amd64
+  - arm64
+maintainer: DewepOnline <deb@dewep.online>
+homepage: https://solocms.ru
+description:
+  - CMS
+section: web
+priority: optional
+control:
+  depends:
+    - systemd
+    - ca-certificates
+    - sqlite3
+  build: scripts/build.sh
+  conffiles:
+    - /etc/solocms/config.yaml
+    - /var/lib/solocms/db.sqlite3
+  preinst: scripts/preinst.sh
+  postinst: scripts/postinst.sh
+  prerm: scripts/prerm.sh
+  postrm: scripts/postrm.sh
+data:
+  usr/bin/solocms: build/bin/solocms_%arch%
+  etc/solocms/config.yaml: configs/config.yaml
+  etc/systemd/system/solocms.service: init/systemd/solocms.service

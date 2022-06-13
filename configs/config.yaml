@@ -1,0 +1,5 @@
+env: prod
+
+log: /var/log/solocms.log
+level: 3
+

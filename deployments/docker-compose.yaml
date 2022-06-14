@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+  
+  backend:
+    build:
+      context: ./../
+      dockerfile: ./deployments/golang.dockerfile
+    command: make run_back
+    depends_on:
+      frontend:
+        condition: service_healthy
+    volumes:
+      - ./../:/app
+
+networks:
+  default:
+    name: develop_net

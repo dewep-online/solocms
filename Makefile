@@ -2,7 +2,7 @@ SHELL=/bin/bash
 
 .PHONY: run_back run_front
 run_back:
-	go run -race cmd/solocms/main.go -config=./configs/config.dev.yaml
+	go run -race cmd/solocms/main.go run -config=./configs/config.dev.yaml
 run_front:
 	cd web && npm ci --no-delete --cache=/tmp && npm run start
 

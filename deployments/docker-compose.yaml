@@ -6,7 +6,7 @@ services:
     build:
       context: ./../
       dockerfile: ./deployments/golang.dockerfile
-    command: make run_back
+    command: make run
     depends_on:
       frontend:
         condition: service_healthy

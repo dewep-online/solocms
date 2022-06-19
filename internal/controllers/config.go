@@ -1,10 +1,11 @@
-package admin
+package controllers
 
 type (
 	Config struct {
 		Content      ContentItem `yaml:"content"`
 		CDN          CDNItem     `yaml:"cdn"`
 		AllowDomains []string    `yaml:"allow_domains"`
+		Langs        []string    `yaml:"langs"`
 	}
 
 	ContentItem struct {

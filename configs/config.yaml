@@ -1,5 +1,24 @@
 env: prod
 
 log: /var/log/solocms.log
-level: 3
+level: 4
 
+http:
+  main:
+    addr: 127.0.0.1:8080
+  admin:
+    addr: 127.0.0.1:8081
+
+content:
+  path: /var/lib/solocms/data
+
+cdn:
+  domain: http://cdn.example.com
+  path: /var/lib/solocms/cdn
+
+allow_domains:
+  - example.com
+
+langs:
+  - en
+  - ru

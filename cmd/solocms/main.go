@@ -19,7 +19,7 @@ func appRun() console.CommandGetter {
 			f.StringVar("config", "./config.yaml", "path to config file")
 		})
 		setter.ExecFunc(func(_ []string, config string) {
-			internal.IntApp(config)
+			internal.InitApp(config)
 		})
 	})
 }

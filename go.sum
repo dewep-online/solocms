@@ -1,8 +1,10 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dewep-online/goppy v0.3.3-0.20220619030440-b7f7988c5b15 h1:2PlDEdvmxD0Imk4VqUv6Hg23Lp0XO+o1aYbxkH14ZNU=
-github.com/dewep-online/goppy v0.3.3-0.20220619030440-b7f7988c5b15/go.mod h1:B5/kiGPMov4VTtXsMf8Qqg58zZgVKBaQTUFO4P/cqj4=
+github.com/dewep-online/goppy v0.3.4-0.20220619210650-ed3cfecd4425 h1:q/hif/BWdmCHtOtien7GlM+QWAy3fMYh42e/ZCEU3PA=
+github.com/dewep-online/goppy v0.3.4-0.20220619210650-ed3cfecd4425/go.mod h1:B5/kiGPMov4VTtXsMf8Qqg58zZgVKBaQTUFO4P/cqj4=
+github.com/dewep-online/solocms-admin-ui v0.0.0-20220619213309-6c7f483dedae h1:0QH4zp1V8pFDKipGzFpqr+7pHgTtpivwsMkC+Ybfp0o=
+github.com/dewep-online/solocms-admin-ui v0.0.0-20220619213309-6c7f483dedae/go.mod h1:SBvHQ3o38o/uDKFJ+0UgKYyBv40ez6BopXrXpEGhzTc=
 github.com/deweppro/go-algorithms v1.2.0 h1:fBS+GNQaeSDSmvFWdmkKLcKXo2DhX5M0AJaCxEqGedY=
 github.com/deweppro/go-algorithms v1.2.0/go.mod h1:zYdfRdlpaXgdT36OgvdjH1qtTZFWEeBi3KUQmWltMPI=
 github.com/deweppro/go-app v1.5.3 h1:/8anw7+ngjtAmk2NKDd/+zFGB7WFmiXyYekym5kqd7U=
@@ -16,9 +18,12 @@ github.com/deweppro/go-http v1.4.3/go.mod h1:zta7HINyRd9nmSRtqxw6APOTXwDPBI42G9i
 github.com/deweppro/go-logger v1.3.0 h1:KN6RQmb6IoNBxQ7zx7Y1AtptHeL//FRgvQyEF5PrcsE=
 github.com/deweppro/go-logger v1.3.0/go.mod h1:jxBBLyHmIvJ4erGUj5qeE6ir36ztyAL1pI+9GymOHVI=
 github.com/deweppro/go-orm v1.0.6/go.mod h1:JEbxJLmXMjSOtlwhuJmrJKZRLhcJcexRvGZ6hgautaw=
+github.com/deweppro/go-static v1.1.1 h1:FMKScbEj/GWEqmjiOuBFTHph15kui79RQwyT9QxZjVE=
+github.com/deweppro/go-static v1.1.1/go.mod h1:xE+EEQL4vtpACZ+IkgfQvx6hbGsXnNeEodrPwN22s1c=
 github.com/go-sql-driver/mysql v1.6.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
 github.com/gomarkdown/markdown v0.0.0-20220607163217-45f7c050e2d1 h1:wAupuFkZ/yq219/mSbqDtMfUZQY0gTYEtoz3/LKtppU=
 github.com/gomarkdown/markdown v0.0.0-20220607163217-45f7c050e2d1/go.mod h1:JDGcbDT52eL4fju3sZ4TeHGsQwhG9nbDV21aMyhwPoA=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/josharian/intern v1.0.0 h1:vlS4z54oSdjm0bgjRigI+G1HpF+tI+9rE5LLzOg8HmY=

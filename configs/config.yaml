@@ -19,6 +19,9 @@ cdn:
 allow_domains:
   - example.com
 
+admin_auth:
+  demo: "demo"
+
 langs:
   - en
   - ru

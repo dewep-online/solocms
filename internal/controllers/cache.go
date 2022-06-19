@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"os"
 	"sync"
 	"text/template"
 
@@ -51,18 +50,6 @@ func (v *Content) Sync() error {
 	return nil
 }
 
-func (v *Content) getPathPage(lang, name string) string {
-	return fmt.Sprintf("%s/%s_%s%s", v.conf.Content.Path, name, lang, files.ExtPage)
-}
-
-func (v *Content) getPathPageMeta(name string) string {
-	return fmt.Sprintf("%s/%s%s", v.conf.Content.Path, name, files.ExtPageMeta)
-}
-
-func (v *Content) getPathPagePublic(lang, name string) string {
-	return fmt.Sprintf("%s/%s_%s%s", v.conf.Content.Path, name, lang, files.ExtPagePublic)
-}
-
 func (v *Content) PublishAll() error {
 	return v.EachPageMeta(v.publish)
 }
@@ -72,10 +59,10 @@ func (v *Content) PublishByName(name string) error {
 	if err != nil {
 		return err
 	}
-	return v.publish(name, meta)
+	return v.publish(meta)
 }
 
-func (v *Content) publish(name string, meta *files.Meta) error {
+func (v *Content) publish(meta *files.Meta) error {
 	tmpl, err := v.GetTemplate(meta.Template)
 	if err != nil {
 		return err
@@ -84,7 +71,7 @@ func (v *Content) publish(name string, meta *files.Meta) error {
 	for lang, title := range meta.Titles {
 		model.Title = title
 		model.Lang = lang
-		if err = render.Build(v.getPathPage(lang, name), v.getPathPagePublic(lang, name), model, tmpl); err != nil {
+		if err = render.Build(meta.PathPage(lang), meta.PathPublic(lang), model, tmpl); err != nil {
 			return err
 		}
 	}
@@ -115,14 +102,13 @@ func (v *Content) GetTemplate(name string) (*template.Template, error) {
 }
 
 func (v *Content) loadPagesMeta() error {
-	return files.WalkDir(v.conf.Content.Path, files.ExtPageMeta, func(filename, name string) error {
-		model := &files.Meta{}
-
-		if err := files.JSONDec(filename, model); err != nil {
+	return files.WalkDir(v.conf.Content.Path, files.ExtPageMeta, func(filename, id string) error {
+		model := files.NewMeta(id, v.conf.Content.Path)
+		if err := model.Open(); err != nil {
 			return err
 		}
 		v.muxP.Lock()
-		v.pages[name] = model
+		v.pages[id] = model
 		v.muxP.Unlock()
 		return nil
 	})
@@ -138,12 +124,12 @@ func (v *Content) GetPageMeta(name string) (*files.Meta, error) {
 	return nil, fmt.Errorf("page `%s` is not found", name)
 }
 
-func (v *Content) EachPageMeta(call func(string, *files.Meta) error) error {
+func (v *Content) EachPageMeta(call func(*files.Meta) error) error {
 	v.muxP.RLock()
 	defer v.muxP.RUnlock()
 
-	for name, meta := range v.pages {
-		if err := call(name, meta); err != nil {
+	for _, meta := range v.pages {
+		if err := call(meta); err != nil {
 			return err
 		}
 	}
@@ -154,12 +140,11 @@ func (v *Content) loadRoutes() error {
 	v.muxR.Lock()
 	defer v.muxR.Unlock()
 
-	return v.EachPageMeta(func(name string, meta *files.Meta) error {
+	return v.EachPageMeta(func(meta *files.Meta) error {
 		for lang, _ := range meta.Titles {
-			filename := v.getPathPagePublic(lang, name)
-			b, err := os.ReadFile(filename)
+			b, err := meta.ReadPublic(lang)
 			if err != nil {
-				return fmt.Errorf("page `%s` load err: %w", name, err)
+				return fmt.Errorf("page `%s` load err: %w", meta.Name, err)
 			}
 			v.routes[fmt.Sprintf("/%s%s", lang, meta.URI)] = b
 		}

@@ -35,7 +35,7 @@ func Build(from, to string, m TemplateModel, t *template.Template) error {
 
 	m.Content = string(markdown.ToHTML(b, nil, nil))
 
-	buf, err := os.Create(to)
+	buf, err := os.OpenFile(to, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		return fmt.Errorf("create file `%s`: %w", to, err)
 	}

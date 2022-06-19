@@ -3,9 +3,11 @@ module github.com/dewep-online/solocms
 go 1.17
 
 require (
-	github.com/dewep-online/goppy v0.3.3-0.20220619030440-b7f7988c5b15
+	github.com/dewep-online/goppy v0.3.4-0.20220619210650-ed3cfecd4425
+	github.com/dewep-online/solocms-admin-ui v0.0.0-20220619213309-6c7f483dedae
 	github.com/deweppro/go-app v1.5.3
 	github.com/gomarkdown/markdown v0.0.0-20220607163217-45f7c050e2d1
+	github.com/google/uuid v1.3.0
 	golang.org/x/text v0.3.7
 )
 
@@ -15,6 +17,7 @@ require (
 	github.com/deweppro/go-errors v0.0.4 // indirect
 	github.com/deweppro/go-http v1.4.3 // indirect
 	github.com/deweppro/go-logger v1.3.0 // indirect
+	github.com/deweppro/go-static v1.1.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/oschwald/geoip2-golang v1.7.0 // indirect

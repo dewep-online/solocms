@@ -14,15 +14,6 @@ const (
 	ExtTmpl       = ".tmpl"
 )
 
-type (
-	Meta struct {
-		Name     string            `json:"name"`
-		URI      string            `json:"uri"`
-		Template string            `json:"tmpl"`
-		Titles   map[string]string `json:"titles"`
-	}
-)
-
 func WalkDir(dir, ext string, call func(filename, name string) error) error {
 	return filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
 		if err != nil {
@@ -42,4 +33,12 @@ func JSONDec(filename string, model interface{}) error {
 		return err
 	}
 	return json.Unmarshal(b, model)
+}
+
+func JSONEnc(filename string, model interface{}) error {
+	b, err := json.Marshal(model)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(filename, b, 0666)
 }

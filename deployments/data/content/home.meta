@@ -1,8 +1,9 @@
 {
   "name": "Home Page",
-  "uri": "/",
+  "uri": "/home",
   "tmpl": "base",
   "titles": {
-    "en": "Home Page Title"
+    "en": "Home Page Title",
+    "ru": "Заголовок домашней страницы"
   }
 }
